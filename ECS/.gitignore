@@ -11,6 +11,7 @@
 *.userprefs
 
 # Build results
+build/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -18,6 +19,7 @@
 x64/
 x86/
 bld/
+[Bb]in/
 [Oo]bj/
 [Ll]og/
 
@@ -39,16 +41,10 @@ TestResult.xml
 [Rr]eleasePS/
 dlldata.c
 
-# Prerequisites
-*.d
-
 # DNX
 project.lock.json
 artifacts/
 
-*.slo
-*.lo
-*.o
 *_i.c
 *_p.c
 *_i.h
@@ -73,8 +69,6 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
-*.gch
-
 
 # Chutzpah Test files
 _Chutzpah*
@@ -306,28 +300,5 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-
 # Windows shortcuts
 *.lnk
-ECS/include/ECS/Tools.h
