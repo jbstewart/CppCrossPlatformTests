@@ -6,12 +6,8 @@ set(BOOST_INCLUDEDIR $ENV{GsoBoostIncludeDir})
 set(BOOST_LIBRARYDIR $ENV{GsoBoostLibraryDir})
 find_package(Boost 1.67.0 EXACT COMPONENTS unit_test_framework REQUIRED)
 
-set(test_sources
-	BoostTest_SimpleTests.cpp
-)
+include_directories("../FakeIt/single_header/boost/")
+include_directories("../SimpleMockExample")
 
-add_executable(btest_examples ${test_sources})
-
-target_link_libraries(btest_examples Boost::unit_test_framework)
-
-add_test(NAME btest_examples COMMAND btest_examples)
+set(requiredTestLibs Boost::unit_test_framework)
+add_tests_in_folder( *.cpp ${requiredTestLibs})
