@@ -1,0 +1,17 @@
+set (Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_DETAILED_FAILURE_MSG ON)
+
+set(BOOST_INCLUDEDIR $ENV{GsoBoostIncludeDir})
+set(BOOST_LIBRARYDIR $ENV{GsoBoostLibraryDir})
+find_package(Boost 1.67.0 EXACT COMPONENTS unit_test_framework REQUIRED)
+
+set(test_sources
+	BoostTest_SimpleTests.cpp
+)
+
+add_executable(btest_examples ${test_sources})
+
+target_link_libraries(btest_examples Boost::unit_test_framework)
+
+add_test(NAME btest_examples COMMAND btest_examples)

@@ -3,6 +3,7 @@ include_directories(${gmock_SOURCE_DIR}/include)
 
 set(test_sources
 	TestCase_01.cpp
+	TestCase_02.cpp
 )
 
 add_executable(gtest_examples ${test_sources})
