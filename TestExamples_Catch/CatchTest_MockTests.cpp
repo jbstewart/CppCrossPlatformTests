@@ -23,9 +23,29 @@ TEST_CASE("Catch_Mock01") {
 }
 
 TEST_CASE("Catch_Mock02") {
-	REQUIRE(false);
+	Mock<Interface> mock;
+	Fake(Method(mock, DoThingA), Method(mock, SetPropC));
+	When(Method(mock, DoThingB)).Return(5);
+	When(Method(mock, GetPropC)).Return("foo");
+	SystemUnderTest sut(mock.get());
+	REQUIRE(sut.Act() == "foo");
+
+	Verify(Method(mock, DoThingA)).Never();
+	Verify(Method(mock, DoThingB)).Once();
+	Verify(Method(mock, SetPropC).Using("foo")).Once();
+	Verify(Method(mock, SetPropC).Using("farkle")).Never();
 }
 
 TEST_CASE("Catch_Mock03") {
-	REQUIRE(false);
+	Mock<Interface> mock;
+	Fake(Method(mock, DoThingA), Method(mock, SetPropC));
+	When(Method(mock, DoThingB)).Return(6);
+	When(Method(mock, GetPropC)).Return("foo");
+	SystemUnderTest sut(mock.get());
+	REQUIRE(sut.Act() == "foo");
+
+	Verify(Method(mock, DoThingA)).Never();
+	Verify(Method(mock, DoThingB)).Once();
+	Verify(Method(mock, SetPropC).Using("foo")).Once();
+	VerifyNoOtherInvocations(Method(mock, SetPropC));
 }
