@@ -11,3 +11,4 @@ enable_testing()
 
 add_subdirectory(TestExamples_GoogleTest)
 add_subdirectory(TestExamples_BoostTest)
+add_subdirectory(TestExamples_Catch)
