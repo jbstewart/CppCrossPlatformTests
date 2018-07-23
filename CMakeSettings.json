@@ -2,8 +2,8 @@
   // See https://go.microsoft.com//fwlink//?linkid=834763 for more information about this file.
   "environments": [
     {
-      "GsoBoostRootDir": "C:/Users/jbste/source/Workspaces/GSO/3rdParty/boost/boost_1_67_0", // change this for your machine
-      "GsoBoostIncludeDir": "${env.GsoBoostRootDir}/include/"
+      // change this for your machine or define the environment variable OVERRIDE_BOOSTROOTDIR to point to the boost version to use
+      "BoostRootDir": "C:/lib/boost/boost_1_67_0"
     }
   ],
   "configurations": [
@@ -11,7 +11,7 @@
       "name": "x86-Debug",
       "environments": [
         {
-          "GsoBoostLibraryDir": "${env.GsoBoostRootDir}/vs141-x86/lib"
+          "BoostLibraryName": "vs141-x86"
         }
       ],
       "generator": "Ninja",
@@ -27,7 +27,7 @@
       "name": "x86-Release",
       "environments": [
         {
-          "GsoBoostLibraryDir": "${env.GsoBoostRootDir}/vs141-x86/lib"
+          "BoostLibraryName": "vs141-x86"
         }
       ],
       "generator": "Ninja",
@@ -43,7 +43,7 @@
       "name": "x64-Debug",
       "environments": [
         {
-          "GsoBoostLibraryDir": "${env.GsoBoostRootDir}/vs141-x64/lib"
+          "BoostLibraryName": "vs141-x64"
         }
       ],
       "generator": "Ninja",
@@ -59,7 +59,7 @@
       "name": "x64-Release",
       "environments": [
         {
-          "GsoBoostLibraryDir": "${env.GsoBoostRootDir}/vs141-x64/lib"
+          "BoostLibraryName": "vs141-x64"
         }
       ],
       "generator": "Ninja",
