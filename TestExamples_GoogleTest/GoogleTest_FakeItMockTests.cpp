@@ -1,8 +1,9 @@
 #include "gtest/gtest.h"
-#include <fakeit.hpp>
 
 #include "SimpleExampleSUT.h"
 
+#ifndef INTEL_CXX
+#include <fakeit.hpp>
 using namespace fakeit;
 
 TEST(GoogleTestFakeItMockTests, ThingBLessThanFive) {
@@ -47,3 +48,4 @@ TEST(GoogleTestFakeItMockTests, ThingBGreaterThanFive) {
 	Verify(Method(mock, SetPropC).Using("foo")).Once();
 	VerifyNoOtherInvocations(Method(mock, SetPropC));
 }
+#endif

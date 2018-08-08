@@ -1,9 +1,8 @@
 {
-  // See https://go.microsoft.com//fwlink//?linkid=834763 for more information about this file.
   "environments": [
     {
-      // change this for your machine or define the environment variable OVERRIDE_BOOSTROOTDIR to point to the boost version to use
-      "BoostRootDir": "C:/lib/boost/boost_1_67_0"
+      "BoostRootDir": "C:/lib/boost/boost_1_67_0",
+      "ToolChainFile": "${projectDir}/VS2017Toolchain.cmake"
     }
   ],
   "configurations": [
@@ -16,7 +15,9 @@
       ],
       "generator": "Ninja",
       "configurationType": "Debug",
-      "inheritEnvironments": [ "msvc_x64" ],
+      "inheritEnvironments": [
+        "msvc_x64"
+      ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
       "cmakeCommandArgs": "-DBoost_DEBUG=ON",
@@ -32,7 +33,9 @@
       ],
       "generator": "Ninja",
       "configurationType": "RelWithDebInfo",
-      "inheritEnvironments": [ "msvc_x86" ],
+      "inheritEnvironments": [
+        "msvc_x86"
+      ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
       "cmakeCommandArgs": "",
@@ -48,10 +51,12 @@
       ],
       "generator": "Ninja",
       "configurationType": "Debug",
-      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "inheritEnvironments": [
+        "msvc_x64_x64"
+      ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${env.ToolChainFile}",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -64,7 +69,9 @@
       ],
       "generator": "Ninja",
       "configurationType": "RelWithDebInfo",
-      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "inheritEnvironments": [
+        "msvc_x64_x64"
+      ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
       "cmakeCommandArgs": "",
@@ -90,7 +97,19 @@
       "cmakeCommandArgs": "",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
-      "inheritEnvironments": [ "linux_x64" ]
+      "variables": [
+        {
+          "name": "CMAKE_C_COMPILER",
+          "value": "/opt/rh/devtoolset-7/root/usr/bin/gcc"
+        },
+        {
+          "name": "CMAKE_CXX_COMPILER",
+          "value": "/opt/rh/devtoolset-7/root/usr/bin/g++"
+        }
+      ],
+      "inheritEnvironments": [
+        "linux_x64"
+      ]
     },
     {
       "name": "Linux-Release",
@@ -111,7 +130,163 @@
       "cmakeCommandArgs": "",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
-      "inheritEnvironments": [ "linux_x64" ]
+      "variables": [
+        {
+          "name": "CMAKE_C_COMPILER",
+          "value": "/opt/rh/devtoolset-7/root/usr/bin/gcc"
+        },
+        {
+          "name": "CMAKE_CXX_COMPILER",
+          "value": "/opt/rh/devtoolset-7/root/usr/bin/g++"
+        }
+      ],
+      "inheritEnvironments": [
+        "linux_x64"
+      ]
+    },
+    {
+      "name": "Linux-Intel-Debug",
+      "generator": "Unix Makefiles",
+      "remoteMachineName": "${defaultRemoteMachineName}",
+      "configurationType": "Debug",
+      "remoteCMakeListsRoot": "/var/tmp/src/${workspaceHash}/${name}",
+      "cmakeExecutable": "/usr/local/bin/cmake",
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "remoteBuildRoot": "/var/tmp/build/${workspaceHash}/build/${name}",
+      "remoteInstallRoot": "/var/tmp/build/${workspaceHash}/install/${name}",
+      "remoteCopySources": true,
+      "remoteCopySourcesOutputVerbosity": "Normal",
+      "remoteCopySourcesConcurrentCopies": "10",
+      "remoteCopySourcesMethod": "rsync",
+      "remoteCopyBuildOutput": false,
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "variables": [
+        {
+          "name": "CMAKE_C_COMPILER",
+          "value": "/opt/intel/system_studio_2018/compilers_and_libraries_2018.2.199/linux/bin/intel64/icc"
+        },
+        {
+          "name": "CMAKE_CXX_COMPILER",
+          "value": "/opt/intel/system_studio_2018/compilers_and_libraries_2018.2.199/linux/bin/intel64/icc"
+        },
+        {
+          "name": "CMAKE_CXX_FLAGS",
+          "value": "-DINTEL_CXX"
+        }
+      ],
+      "inheritEnvironments": [
+        "linux_x64"
+      ]
+    },
+    {
+      "name": "Linux-Intel-Release",
+      "generator": "Unix Makefiles",
+      "remoteMachineName": "${defaultRemoteMachineName}",
+      "configurationType": "Release",
+      "remoteCMakeListsRoot": "/var/tmp/src/${workspaceHash}/${name}",
+      "cmakeExecutable": "/usr/local/bin/cmake",
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "remoteBuildRoot": "/var/tmp/build/${workspaceHash}/build/${name}",
+      "remoteInstallRoot": "/var/tmp/build/${workspaceHash}/install/${name}",
+      "remoteCopySources": true,
+      "remoteCopySourcesOutputVerbosity": "Normal",
+      "remoteCopySourcesConcurrentCopies": "10",
+      "remoteCopySourcesMethod": "rsync",
+      "remoteCopyBuildOutput": false,
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "variables": [
+        {
+          "name": "CMAKE_C_COMPILER",
+          "value": "/opt/intel/system_studio_2018/compilers_and_libraries_2018.2.199/linux/bin/intel64/icc"
+        },
+        {
+          "name": "CMAKE_CXX_COMPILER",
+          "value": "/opt/intel/system_studio_2018/compilers_and_libraries_2018.2.199/linux/bin/intel64/icc"
+        },
+        {
+          "name": "CMAKE_CXX_FLAGS",
+          "value": "-DINTEL_CXX"
+        }
+      ],
+      "inheritEnvironments": [
+        "linux_x64"
+      ]
+    },
+    {
+      "environments": [
+        {
+          "MINGW64_ROOT": "C:\\msys64\\mingw64",
+          "BIN_ROOT": "${env.MINGW64_ROOT}\\bin",
+          "FLAVOR": "x86_64-w64-mingw32",
+          "TOOLSET_VERSION": "7.3.0",
+          "PATH": "${env.MINGW64_ROOT}\\bin;${env.MINGW64_ROOT}\\..\\usr\\local\\bin;${env.MINGW64_ROOT}\\..\\usr\\bin;${env.MINGW64_ROOT}\\..\\bin;${env.PATH}",
+          "INCLUDE": "${env.INCLUDE};${env.MINGW64_ROOT}\\include\\c++\\${env.TOOLSET_VERSION};${env.MINGW64_ROOT}\\include\\c++\\${env.TOOLSET_VERSION}\\tr1;${env.MINGW64_ROOT}\\include\\c++\\${env.TOOLSET_VERSION}\\${env.FLAVOR}",
+          "environment": "mingw_64"
+        }
+      ],
+      "name": "Mingw64-Debug",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "inheritEnvironments": [
+        "mingw_64"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "-v",
+      "ctestCommandArgs": "",
+      "intelliSenseMode": "linux-gcc-x64",
+      "variables": [
+        {
+          "name": "CMAKE_C_COMPILER",
+          "value": "${env.BIN_ROOT}\\gcc.exe"
+        },
+        {
+          "name": "CMAKE_CXX_COMPILER",
+          "value": "${env.BIN_ROOT}\\g++.exe"
+        }
+      ]
+    },
+    {
+      "environments": [
+        {
+          "environment": "Intel_64",
+          "INTEL64_ROOT": "C:\\Program Files (x86)\\IntelSWTools\\system_studio_for_windows_2018.1.051\\compilers_and_libraries_2018\\windows\\bin\\intel64",
+          "BoostLibraryName": "intel-18.0-vs141-x64"
+        }
+      ],
+      "name": "Intel-64-Debug",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "inheritEnvironments": [
+        "Intel_64"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "-v",
+      "ctestCommandArgs": "",
+      "intelliSenseMode": "linux-gcc-x64",
+      "variables": [
+        {
+          "name": "CMAKE_CXX_COMPILER",
+          "value": "${env.INTEL64_ROOT}\\icl.exe"
+        },
+        {
+          "name": "CMAKE_CXX_COMPILER_ARCHITECTURE_ID",
+          "value": "x64"
+        },
+        {
+          "name": "CMAKE_CXX_FLAGS",
+          "value": "-DINTEL_CXX"
+        }
+      ]
     }
   ]
 }
