@@ -1,6 +1,7 @@
 set (Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_DETAILED_FAILURE_MSG ON)
+set(Boost_DEBUG ON)
 
 if (UNIX)
 	set(BoostRootDir "/opt/boost/boost_1_67_0")

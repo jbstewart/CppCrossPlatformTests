@@ -4,10 +4,11 @@
 
 // VERY IMPORTANT - include this last
 #include <boost/test/unit_test.hpp>
-#include <fakeit.hpp>
 #include "SimpleExampleInterface.h"
 #include "SimpleExampleSUT.h"
 
+#ifndef INTEL_CXX
+#include <fakeit.hpp>
 using namespace fakeit;
 
 BOOST_AUTO_TEST_SUITE(BoostTestMockTests)
@@ -58,3 +59,5 @@ BOOST_AUTO_TEST_CASE(BoostTestMockTests_ThingBGreaterThanFive)
 }
 
 BOOST_AUTO_TEST_SUITE_END()
+
+#endif
