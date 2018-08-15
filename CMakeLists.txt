@@ -13,12 +13,10 @@ add_subdirectory(googletest)
 enable_testing()
 
 add_subdirectory(TestExamples_GoogleTest)
-if(NOT DEFINED LINUX)
-	if ( DEFINED INTEL_CXX)
-		add_subdirectory(TestExamples_BoostTest)
-		add_subdirectory(TestExamples_Catch)
-	endif(DEFINED INTEL_CXX)
-endif(NOT DEFINED LINUX)
+if(LINUX OR NOT DEFINED INTEL_CXX)
+	add_subdirectory(TestExamples_BoostTest)
+	add_subdirectory(TestExamples_Catch)
+endif(WIN32 AND NOT DEFINED INTEL_CXX)
 
 #set(ALLTESTS 
 #TestExamples_GoogleTest

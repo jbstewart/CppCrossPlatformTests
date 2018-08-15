@@ -3,5 +3,8 @@
     "cmake.cmakePath": "/usr/bin/cmake3",
     "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
     // Debug configuration for debugging unittests.
-    "gtest-adapter.debugConfig": "(gdb) Launch"
+    "gtest-adapter.debugConfig": "(gdb) Launch",
+    "files.associations": {
+        "array": "cpp"
+    }
 }
