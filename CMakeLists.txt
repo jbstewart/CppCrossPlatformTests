@@ -20,6 +20,8 @@ if(NOT DEFINED LINUX)
 	endif(DEFINED INTEL_CXX)
 endif(NOT DEFINED LINUX)
 
+add_subdirectory(App)
+
 #set(ALLTESTS 
 #TestExamples_GoogleTest
 #TestExamples_BoostTest
